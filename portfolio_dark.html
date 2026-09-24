@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Patel | Portfolio (Dark)</title>
+<style>
+  :root {
+    --primary: #818cf8;
+    --primary-dark: #6366f1;
+    --dark: #e2e8f0;
+    --light-bg: #0b0f1a;
+    --card-bg: #151b2b;
+    --text-muted: #94a3b8;
+    --border: #232b3d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--dark);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .navbar .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+  .navbar ul { list-style: none; display: flex; gap: 28px; }
+  .navbar a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.92rem; }
+  .navbar a:hover { color: var(--primary); }
+  .navbar .cta-btn { background: var(--primary); color: #fff; padding: 9px 18px; border-radius: 8px; }
+
+  /* Hero */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    padding: 80px 8%;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-text { flex: 1; min-width: 300px; }
+  .hero-text .tag {
+    display: inline-block;
+    background: #1e2544;
+    color: #a5b4fc;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .hero-text h1 { font-size: 2.6rem; margin-bottom: 10px; }
+  .hero-text h1 span { color: var(--primary); }
+  .hero-text h2 { font-size: 1.2rem; color: var(--text-muted); font-weight: 600; margin-bottom: 18px; }
+  .hero-text p { color: var(--text-muted); font-size: 1rem; margin-bottom: 26px; max-width: 460px; }
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary {
+    padding: 13px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-secondary { background: var(--card-bg); color: var(--dark); border: 1px solid var(--border); }
+
+  .hero-visual {
+    flex: 0 0 220px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: 800;
+  }
+
+  /* Section shared */
+  .section { padding: 60px 8%; max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 40px; }
+  .section-header h2 { font-size: 2rem; margin-bottom: 8px; }
+  .section-header p { color: var(--text-muted); }
+
+  /* About / skills */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .about-grid p { color: var(--text-muted); margin-bottom: 16px; }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-pill {
+    background: #1e2544;
+    color: #a5b4fc;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+  .project-card:hover { transform: translateY(-4px); }
+  .project-thumb {
+    height: 140px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 1.1rem;
+  }
+  .project-body { padding: 22px; }
+  .project-body h3 { margin-bottom: 8px; font-size: 1.05rem; }
+  .project-body p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .project-tags span {
+    background: #1e293b;
+    color: #cbd5e1;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+  }
+  .project-link { color: var(--primary); font-weight: 700; font-size: 0.85rem; text-decoration: none; }
+
+  /* Experience / timeline */
+  .timeline { border-left: 3px solid var(--border); padding-left: 24px; }
+  .timeline-item { margin-bottom: 30px; position: relative; }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -31px; top: 4px;
+    width: 12px; height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+  .timeline-item h4 { font-size: 1rem; }
+  .timeline-item .meta { color: var(--primary); font-size: 0.82rem; font-weight: 700; margin-bottom: 4px; }
+  .timeline-item p { color: var(--text-muted); font-size: 0.9rem; }
+
+  /* Contact / Footer */
+  footer {
+    background: #060a12;
+    color: #cbd5e1;
+    padding: 55px 8% 20px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-grid h4 { color: #fff; margin-bottom: 14px; }
+  .footer-grid a, .footer-grid p { color: #94a3b8; text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 8px; }
+  .footer-bottom {
+    border-top: 1px solid #1e293b;
+    padding-top: 18px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #475569;
+  }
+
+  @media (max-width: 640px) {
+    .navbar ul { display: none; }
+    .hero-text h1 { font-size: 2rem; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">Dev Patel</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="cta-btn">Hire Me</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="tag">OPEN TO INTERNSHIPS</span>
+    <h1>Hi, I'm <span>Dev Patel</span></h1>
+    <h2>Backend Developer &amp; IoT Enthusiast</h2>
+    <p>Diploma in Computer Engineering student at GTU, building responsive web
+       interfaces and embedded systems projects, with a growing focus on
+       AI-assisted development workflows.</p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-secondary">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-visual">DP</div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-header">
+    <h2>About Me</h2>
+    <p>A quick look at who I am and what I work with.</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p>I'm a Computer Engineering diploma student with a strong interest in
+         backend development, IoT/embedded systems, and 3D web rendering. I enjoy
+         building interfaces that are clean, fast, and genuinely usable, and I use
+         AI coding tools to speed up prototyping without skipping the fundamentals.</p>
+      <p>Currently working on my final-year project alongside a two-person team,
+         and exploring how AI-assisted ("Vibe Coding") workflows fit into a
+         standard web and embedded development pipeline.</p>
+    </div>
+    <div>
+      <h3 style="margin-bottom:14px; font-size:1rem;">Skills</h3>
+      <div class="skills-list">
+        <span class="skill-pill">HTML5 / CSS3</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">Laravel</span>
+        <span class="skill-pill">Arduino / IoT</span>
+        <span class="skill-pill">Git &amp; GitHub</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQLite / MySQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects" style="background:var(--card-bg); border-radius:20px; border:1px solid var(--border);">
+  <div class="section-header">
+    <h2>Projects</h2>
+    <p>Selected academic and personal work.</p>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb">NutriScan</div>
+      <div class="project-body">
+        <h3>NutriScan</h3>
+        <p>Barcode-free food label scanner and nutrition analyzer web app, built as a final-year diploma project.</p>
+        <div class="project-tags"><span>Web App</span><span>Final Year</span></div>
+        <a href="#" class="project-link">View Repository &rarr;</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">Smart Room</div>
+      <div class="project-body">
+        <h3>Smart Room Automation</h3>
+        <p>PIR sensor + ESP8266 + relay based automated room lighting, controlled via the Blynk app.</p>
+        <div class="project-tags"><span>IoT</span><span>ESP8266</span></div>
+        <a href="#" class="project-link">View Repository &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="section-header">
+    <h2>Education &amp; Timeline</h2>
+    <p>Academic path so far.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="meta">2024 &ndash; Present</div>
+      <h4>Diploma in Computer Engineering</h4>
+      <p>Gujarat Technological University (GTU), GPC Jamnagar &mdash; currently in Semester V.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="meta">Ongoing</div>
+      <h4>Final-Year Project &mdash; NutriScan</h4>
+      <p>Working in a three-person team on a food label ingredient analysis web app.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <h4>Dev Patel</h4>
+      <p>Backend developer and IoT enthusiast, building projects while completing a
+         Computer Engineering diploma at GTU.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:devjpatel08@gmail.com">devjpatel08@gmail.com</a>
+      <a href="https://github.com/DevPatel4711">github.com/DevPatel4711</a>
+      <a href="https://www.linkedin.com/in/dev-patel-b719a6385/">linkedin.com/in/devpatel</a>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Education</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Dev Patel. Built for Practical No. 2 &mdash; Vibe Coding Lab, GPC Jamnagar.
+  </div>
+</footer>
+
+</body>
+</html>
