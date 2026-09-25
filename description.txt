@@ -1,0 +1,22 @@
+PRACTICAL NO. 5
+AIM: To clone an existing GitHub repository in VS Code and push AI-generated code to it.
+
+STEPS & COMMANDS USED:
+
+1. Opened VS Code and launched the integrated terminal.
+2. Cloned the existing repository using:
+   git clone https://github.com/<username>/portfolio-dark.git
+3. Navigated into the project folder:
+   cd portfolio-dark
+4. Added the AI-generated file (portfolio_dark.html) into the folder.
+5. Opened the Source Control panel in VS Code.
+6. Reviewed the changed file listed under "Changes".
+7. Staged the file by clicking the + icon.
+8. Entered the commit message: "Add AI-generated dark theme portfolio page"
+9. Clicked the Commit (check mark) button to commit the change locally.
+10. Clicked "Sync Changes" to push the commit to the remote GitHub repository.
+11. Refreshed the GitHub repository page in the browser to confirm the file was uploaded successfully.
+
+OUTPUT:
+- Screenshot of VS Code Source Control panel showing the committed change.
+- Screenshot of the GitHub repository page showing the pushed file.
